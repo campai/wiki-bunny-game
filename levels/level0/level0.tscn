@@ -1,20 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://iokx2msqnkyr"]
+[gd_scene load_steps=8 format=3 uid="uid://iokx2msqnkyr"]
 
 [ext_resource type="Script" path="res://levels/level0/level0.gd" id="1_w5e5e"]
 [ext_resource type="Texture2D" uid="uid://db61f2at4o17j" path="res://carrot/carrot0.png" id="2_jo7wg"]
-[ext_resource type="Texture2D" uid="uid://c43uee71d30lg" path="res://player/bunny0.png" id="2_xls8x"]
-[ext_resource type="AudioStream" uid="uid://do2r6m260dqgs" path="res://hrup.mp3" id="3_waeef"]
+[ext_resource type="Texture2D" uid="uid://cooj5ves4t5du" path="res://bkg/green-grass-texture.png" id="2_pegtk"]
+[ext_resource type="PackedScene" uid="uid://cbwtm0wgdmot1" path="res://player/player.tscn" id="3_fas5x"]
 [ext_resource type="Texture2D" uid="uid://cg63rynuo6rt" path="res://bush/bush0.png" id="4_ajfgk"]
 [ext_resource type="Texture2D" uid="uid://cig8ua0jj7xw5" path="res://grass/grass0.png" id="5_6yu4f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0we84"]
 size = Vector2(250, 320)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqvps"]
-size = Vector2(176, 196)
-
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w5e5e")
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+
+[node name="TextureRect" type="TextureRect" parent="Background/ParallaxLayer"]
+offset_right = 1153.0
+offset_bottom = 645.0
+texture = ExtResource("2_pegtk")
+stretch_mode = 1
 
 [node name="Carrot" type="Sprite2D" parent="."]
 position = Vector2(557, 284)
@@ -32,20 +39,7 @@ scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_0we84")
 debug_color = Color(0.980392, 0, 0.376471, 0.419608)
 
-[node name="Bunny" type="Sprite2D" parent="."]
-position = Vector2(327, 185)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_xls8x")
-
-[node name="hrup" type="AudioStreamPlayer2D" parent="Bunny"]
-stream = ExtResource("3_waeef")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Bunny"]
-
-[node name="BunnyCollisionShape" type="CollisionShape2D" parent="Bunny/CharacterBody2D"]
-position = Vector2(6, 0)
-shape = SubResource("RectangleShape2D_wqvps")
-debug_color = Color(0.945098, 0, 0.588235, 0.419608)
+[node name="Bunny" parent="." instance=ExtResource("3_fas5x")]
 
 [node name="Bush" type="Sprite2D" parent="."]
 position = Vector2(221, 600)

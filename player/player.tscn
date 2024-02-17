@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbwtm0wgdmot1"]
+
+[ext_resource type="Texture2D" uid="uid://c43uee71d30lg" path="res://player/bunny0.png" id="1_1bjlp"]
+[ext_resource type="AudioStream" uid="uid://do2r6m260dqgs" path="res://hrup.mp3" id="2_3hoj4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqvps"]
+size = Vector2(176, 196)
+
+[node name="Bunny" type="Sprite2D"]
+position = Vector2(327, 185)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_1bjlp")
+
+[node name="hrup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_3hoj4")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="BunnyCollisionShape" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(6, 0)
+shape = SubResource("RectangleShape2D_wqvps")
+debug_color = Color(0.945098, 0, 0.588235, 0.419608)
