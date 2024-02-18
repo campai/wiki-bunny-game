@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bctp8fwkbe23"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ilnty"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_s1vkd"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_3brc7"]
+next_pass = SubResource("ORMMaterial3D_s1vkd")
+albedo_color = Color(0.717647, 0, 0.807843, 1)
+albedo_texture_force_srgb = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fmsw"]
+
+[node name="Bunny3D" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ilnty")
+surface_material_override/0 = SubResource("ORMMaterial3D_3brc7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3fmsw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.944089, 0.329691, 0, -0.329691, 0.944089, -1.10923, 1.6181, 4.76113)
+fov = 67.913
