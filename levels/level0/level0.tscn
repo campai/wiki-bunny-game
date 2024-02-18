@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://iokx2msqnkyr"]
+[gd_scene load_steps=9 format=3 uid="uid://iokx2msqnkyr"]
 
 [ext_resource type="Script" path="res://levels/level0/level0.gd" id="1_w5e5e"]
 [ext_resource type="Texture2D" uid="uid://db61f2at4o17j" path="res://carrot/carrot0.png" id="2_jo7wg"]
@@ -7,8 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://cg63rynuo6rt" path="res://bush/bush0.png" id="4_ajfgk"]
 [ext_resource type="Texture2D" uid="uid://cig8ua0jj7xw5" path="res://grass/grass0.png" id="5_6yu4f"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0we84"]
-size = Vector2(250, 320)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d05c7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3wjrx"]
+radius = 65.0
+height = 210.0
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w5e5e")
@@ -23,20 +26,17 @@ offset_bottom = 645.0
 texture = ExtResource("2_pegtk")
 stretch_mode = 1
 
-[node name="Carrot" type="Sprite2D" parent="."]
+[node name="Carrot" type="StaticBody2D" parent="."]
 position = Vector2(557, 284)
 scale = Vector2(0.2, 0.2)
+physics_material_override = SubResource("PhysicsMaterial_d05c7")
+
+[node name="Image" type="Sprite2D" parent="Carrot"]
 texture = ExtResource("2_jo7wg")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Carrot"]
-position = Vector2(-5570, -2840)
-scale = Vector2(10, 10)
-disable_mode = 2
-
-[node name="CarrotCollisionShapre" type="CollisionShape2D" parent="Carrot/StaticBody2D"]
-position = Vector2(558, 286)
-scale = Vector2(0.1, 0.1)
-shape = SubResource("RectangleShape2D_0we84")
+[node name="CarrotCollisionShapre" type="CollisionShape2D" parent="Carrot"]
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_3wjrx")
 debug_color = Color(0.980392, 0, 0.376471, 0.419608)
 
 [node name="Bunny" parent="." instance=ExtResource("3_fas5x")]
