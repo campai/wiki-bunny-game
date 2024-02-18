@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc4qn132ylkoc"]
+
+[ext_resource type="Texture2D" uid="uid://db61f2at4o17j" path="res://carrot/carrot0.png" id="1_k1j5e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d05c7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3wjrx"]
+radius = 65.0
+height = 210.0
+
+[node name="Carrot" type="StaticBody2D"]
+position = Vector2(557, 284)
+scale = Vector2(0.2, 0.2)
+physics_material_override = SubResource("PhysicsMaterial_d05c7")
+
+[node name="Image" type="Sprite2D" parent="."]
+texture = ExtResource("1_k1j5e")
+
+[node name="CarrotCollisionShapre" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3wjrx")
+debug_color = Color(0.980392, 0, 0.376471, 0.419608)
